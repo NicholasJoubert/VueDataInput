@@ -10,9 +10,6 @@ let myVue = new Vue({
         myList : [],
 },
 methods : {
-    // getCategory(id){
-    //     return document.getElementById(id).innerHTML;
-    // },
 
 
     saveItem(){
@@ -35,6 +32,7 @@ methods : {
 
 },
 computed :{
+    //function that reverse list order to be displayed in data this way the data enters from th
     sortedItems(){
        return this.myList.slice(0).reverse();
     }
