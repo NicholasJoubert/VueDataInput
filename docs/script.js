@@ -11,7 +11,9 @@ let myVue = new Vue({
 },
 methods : {
 
-
+// function pushs an object created by the form to a list 
+// to later be displayed
+ 
     saveItem(){
         
         let category = document.getElementById(this.icon).innerHTML
@@ -32,7 +34,8 @@ methods : {
 
 },
 computed :{
-    //function that reverse list order to be displayed in data this way the data enters from th
+    // function that reverse list order to be displayed 
+    // in data this way the data enters from th
     sortedItems(){
        return this.myList.slice(0).reverse();
     }
