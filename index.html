@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Shop</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </head>
+    <body>
+        <div id="myApp">
+            <h1>{{title}}</h1>
+            <p id = "output"></p>
+            <button v-if="state==='edit'" @click="changeState('default')">Cancel</button>
+            <button v-else="state==='default'" @click="changeState('edit')">Add Item</button>
+            
+            <div v-if="state==='edit'">
+                <div class="form">
+                    <input class="input" type="text" placeholder="Product Name" maxlength="20" v-model="myModel" v-on:keyup.enter = "saveItem"><br>
+                    <input class="input" type="number" placeholder="Price in Rand" v-model="price"><br>
+                    <label for="icon">Product Category</label>
+                    <select class="input" id="icon" v-model="icon" name="icon" id="">
+                    <option id="fa fa-car" value="fa fa-car">AutoMobile</option> 
+                    <!-- fa book -->
+                    <option id="fas fa-cat" value="fas fa-cat">Pet</option> 
+                    <!-- fa paw -->
+                    <option id="fas fa-dragon" value="fas fa-dragon">Fantasy</option> 
+                    <!-- fa glass -->
+                    <option id="fas fa-band-aid" value="fas fa-band-aid">Medicine</option> 
+                    <!-- fa gamepad -->
+                    </select>
+                    <br>
+                    <button class="formButton" @click="saveItem" :disabled="myModel.length===0||icon.length===0||price===''">Save</button>
+                </div>
+                <hr>
+            </div>
+                <div v-if="myList.length>0">
+                    <table style="width:100%">
+                        <tr>
+                            <th>Catagory</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                        <!-- display data -->
+                        <tr v-for="(value, name, index) in sortedItems">
+                          <th>{{value.category}} <i v-bind:class="value.icon"></i></th>
+                          <th>{{value.label}}</th>
+                          <th>R{{value.price}}</th>
+                          <th><button class="tableButton" @click="removeItem(name)">Remove Product</button></th>
+                        </tr>
+                      </table>
+                </div>
+            
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>
